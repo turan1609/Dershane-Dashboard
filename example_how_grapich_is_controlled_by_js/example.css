@@ -1,0 +1,85 @@
+:root{
+    --color-white: #ffffff;
+    --color-light: #f0eff5;
+    --color-gray-light: #86848c;
+    --color-gray-dark: #56555e;
+    --color-dark: #27282f;
+    --color--primary: rgb(7, 30, 234);
+    --color-success: rgb(34, 202, 75);
+    --color-danger: rgb(255, 67, 54);
+    --color-warning: rgb(234, 181, 7);
+    --color-blue: rgb(101, 99, 245);
+    --color-green: rgb(77, 95, 35);
+
+    --color-primary-light: rgba(71, 7, 234, 0.2);
+    --color-success-light: rgba(34, 202, 75, 0.2);
+    --color-danger-light: rgba(255, 67, 54, 0.2);
+    --color-blue-light: rgba(99, 162, 245, 0.2);
+    --card-padding: 1.6rem;
+    --padding-1: 1rem;
+    --padding-2: 8px;
+
+    --card-border-radius: 1.6rem;
+    --border-radius-1: 1rem;
+    --border-radius-2: 6px;
+    --color-danger-deg: 0deg;
+}
+
+
+.exam-cards{
+    display: grid;
+    grid-template-columns: 24rem 24rem;
+    gap: 0.3rem;
+    padding: 0.3rem;
+}
+.exam-card{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-green);
+    height: 24rem;
+    align-items: center;
+    justify-content: center;
+}
+.external-circle-tyt{
+    background-color: var(--color-blue-light);
+    width: 20rem;
+    height: 20rem;
+    border: solid 0.2rem;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: conic-gradient(var(--color-danger) var(--color-danger-deg), transparent 0 360deg);
+}
+#external-circle-ayt{
+    background-color: var(--color-blue-light);
+    width: 20rem;
+    height: 20rem;
+    border: solid 0.2rem;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: conic-gradient(var(--color-danger) 252deg, transparent 0 360deg);
+}
+.inner-circle{
+    background-color: var(--color-light);
+    width: 18rem;
+    height: 18rem;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border: solid 0.2rem;
+}
+.inner-circle a{
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+.inner-circle p{
+    font-size: 4rem;
+    color: var(--color-danger);
+}

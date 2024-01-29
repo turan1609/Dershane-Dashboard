@@ -1,0 +1,189 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web UI Dashboard</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp">
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <img src="./images/Triangle Letter A.png" class="logo">
+            <div class="search-bar">
+                <span class="material-symbols-outlined">search</span>
+                <input type="search" placeholder="Search">
+            </div>
+            <div class="profile-area">
+                <div class="theme-btn">
+                    <span class="material-icons-sharp active" id="active">light_mode</span>
+                        <span class="material-icons-sharp">dark_mode</span>
+                </div>
+                <div class="profile">
+                    <div class="profile-photo">
+                        <img src="./images/webphoto.jpg">
+                    </div>
+                    <h5>Yusuf Turan</h5>
+                    <!--<span class="material-symbols-outlined">expand_more</span> -->
+                </div>
+                <button id="menu-btn">
+                    <span class="material-symbols-outlined">expand_more</span>
+                    <!-- <span class="material-symbols-outlined">menu</span> -->
+                </button>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <section class="left">
+            <button id="close-btn"><i class="fa-sharp fa-solid fa-xmark fa-2xl"></i></button>
+            <div class="sidebar">
+                <div class="sidebar-element">
+                    <span class="material-symbols-outlined">grid_view</span>
+                    <a class="active" id="dashboard">Dashboard</a>
+                </div>
+                <div class="sidebar-element">
+                    <span class="material-symbols-outlined">credit_card</span>
+                    <a id="payment">Payment</a>
+                </div>
+                <div class="sidebar-element">
+                    <span class="material-symbols-outlined">full_stacked_bar_chart</span>
+                    <a id="course">Course</a>
+                </div>
+                <div class="sidebar-element">
+                    <span class="material-symbols-outlined">edit_note</span>
+                    <a id="exams">Exams</a>
+                </div>
+                <div class="sidebar-element">
+                    <span class="material-symbols-outlined">note_alt</span>
+                    <a id="note">Note</a>
+                </div>
+                <div class="sidebar-element">
+                    <span class="material-symbols-outlined">chat</span>
+                    <a id="message">Message</a>
+                </div>
+                <div class="sidebar-element">
+                    <span class="material-symbols-outlined">logout</span>
+                    <a id="logout">Log Out</a>
+                </div>
+                
+            </div>
+        </section>
+        <section class="middle">
+           <div class="graph">
+
+           </div>
+           <div class="countdown">
+            <div class="count-container">
+                <div class="count-item">
+                    <span id="day">000</span>
+                    <span>Gün</span>
+                </div>
+                <div class="count-item">
+                    <span id="hour">00</span>
+                    <span>Saat</span>
+                </div>
+                <div class="count-item">
+                    <span id="minute">00</span>
+                    <span>Dakika</span>
+                </div>
+                <div class="count-item">
+                    <span id="second">00</span>
+                    <span>Saniye</span>
+                </div>
+            </div>
+           </div>
+        </section>
+        <section class="right">
+            <div class="exam-cards">
+                <div class="exam-card">
+                    <div id="external-circle-tyt">
+                        <div class="inner-circle">
+                            <h1>TYT</h1>
+                            <p>%70</p>
+                            <a>TYT KONULARI</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="exam-card">
+                    <div id="external-circle-ayt">
+                        <div class="inner-circle">
+                            <h1>AYT</h1>
+                            <p>%33</p>
+                            <a>AYT KONULARI</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="charts">
+                <div class="chart">
+                    <div class="chart-controller">
+                        <div id="turkish"></div>
+                        <div id="tyt-math"></div>
+                        <div id="social"></div>
+                        <div id="science"></div>
+                    </div>
+                </div>
+                <div class="chart">
+                    <div class="chart-controller">
+                        <div id="turkish"></div>
+                        <div id="tyt-math"></div>
+                        <div id="social"></div>
+                        <div id="science"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="./script/script.js"></script>
+    <script type="module">
+
+        import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+        
+        // Declare the chart dimensions and margins.
+        const width = 640;
+        const height = 400;
+        const marginTop = 20;
+        const marginRight = 20;
+        const marginBottom = 30;
+        const marginLeft = 40;
+        
+        // Declare the x (horizontal position) scale.
+        const x = d3.scaleUtc()
+            .domain([new Date("2023-01-01"), new Date("2024-01-01")])
+            .range([marginLeft, width - marginRight]);
+        
+        // Declare the y (vertical position) scale.
+        const y = d3.scaleLinear()
+            .domain([0, 100])
+            .range([height - marginBottom, marginTop]);
+        
+        // Create the SVG container.
+        const svg = d3.create("svg")
+            .attr("width", width)
+            .attr("height", height);
+        
+        // Add the x-axis.
+        svg.append("g")
+            .attr("transform", `translate(0,${height - marginBottom})`)
+            .call(d3.axisBottom(x));
+        
+        // Add the y-axis.
+        svg.append("g")
+            .attr("transform", `translate(${marginLeft},0)`)
+            .call(d3.axisLeft(y));
+        
+        // Append the SVG element.
+        document.querySelector(".graph").appendChild(svg.node());
+
+        
+        </script>
+
+
+</body>
+</html> 
